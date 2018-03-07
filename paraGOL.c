@@ -5,6 +5,9 @@
  Homework #3
  
  Conway's Game of Life - Parallel Program
+
+ Note: For compilation on ASC cluster:
+	icc paraGOL.c -fopenmp -std=c99
  */
 
 #include <stdio.h>
@@ -34,7 +37,6 @@ int main(int argc, const char * argv[]) {
     {
     int id = omp_get_thread_num();
     int nthreads = omp_get_num_threads();
-    printf("# Threads: %d\n", nthreads);
 
     for (int row = 0; row < size; row++){
         for (int col = id; col < size; col = col + nthreads){
