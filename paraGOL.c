@@ -17,10 +17,9 @@
 int main(int argc, const char * argv[]) {
     
     // Get input
-    // int size = atoi(argv[1]);
-    // int max_gens = atoi(argv[2]);
-    int size = 100;
-    int max_gens = 1000;
+    int size = atoi(argv[1]);
+    int max_gens = atoi(argv[2]);
+    omp_set_num_threads(NUM_THREADS);
 
     // Time Start
     time_t start;
@@ -35,6 +34,7 @@ int main(int argc, const char * argv[]) {
     {
     int id = omp_get_thread_num();
     int nthreads = omp_get_num_threads();
+    printf("# Threads: %d\n", nthreads);
 
     for (int row = 0; row < size; row++){
         for (int col = id; col < size; col = col + nthreads){
