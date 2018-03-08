@@ -15,14 +15,12 @@
 #include <omp.h>
 #include <time.h>
 
-#define NUM_THREADS 2
-
 int main(int argc, const char * argv[]) {
     
     // Get input
     int size = atoi(argv[1]);
     int max_gens = atoi(argv[2]);
-    omp_set_num_threads(NUM_THREADS);
+    omp_set_num_threads(atoi(argv[3]));
 
     // Time Start
     time_t start;
